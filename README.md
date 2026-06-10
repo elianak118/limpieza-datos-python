@@ -1,13 +1,21 @@
-# limpieza-datos-python
-Proyecto de Datos en Python para la limpieza y auditoría de 1,000 registros comerciales de telefonía. Automatiza la detección de duplicados, la normalización de texto y el tratamiento de valores nulos con Pandas y NumPy, optimizando la base de datos para análisis estadístico.
+# 🧼 Limpieza y Auditoría de Datos Comerciales con Python
 
-## 🛠️ Tecnologías Utilizadas
-- **Python**
-- **Pandas** (Estructuración de DataFrames, eliminación de duplicados y manejo de nulos)
-- **NumPy** (Cálculos matemáticos para imputación de datos estadísticos)
+## 📝 Descripción del Proyecto
+Este proyecto implementa un flujo de trabajo automatizado en Python para el procesamiento y purificación de datos (*Data Wrangling*). Se procesó un volumen de más de 1,000 registros de ventas tecnológicas, simulando las inconsistencias y errores humanos más comunes en los sistemas de captura (ERP/CRM) para transformarlos en una base de datos estructurada, limpia y lista para analítica avanzada.
 
-## 🚀 Fases del Proceso de Limpieza
-1. **Diagnóstico Inicial:** Conteo automático de registros corruptos, celdas vacías (`NaN`) y filas repetidas.
-2. **Tratamiento de Duplicados:** Remoción de registros de ventas idénticos mediante `.drop_duplicates()`.
-3. **Estandarización de Texto:** Homologación sintáctica de categorías comerciales escritas inconsistentemente (ej. celulares, CELULARES -> Celulares).
-4. **Imputación de Valores Faltantes:** Eliminación de filas críticas sin autoría y reemplazo de montos de venta vacíos utilizando el promedio financiero calculado con NumPy.
+## 🛠️ Tecnologías y Librerías
+- **Python:** 
+- **Pandas:** Manipulación de DataFrames, normalización de strings y gestión de registros corruptos.
+- **NumPy:** Computación matemática para el cálculo e imputación de métricas financieras.
+
+## 🚀 Desafíos Técnicos Resueltos (Paso a Paso)
+1. **Auditoría e Inspección Semántica:** Diagnóstico automático mediante `.isnull().sum()` y `.duplicated()` para cuantificar el estado de corrupción del archivo original.
+2. **Control de Duplicados Masivos:** Eliminación de registros de ventas idénticos mediante `.drop_duplicates()` para evitar la sobreestimación de ingresos.
+3. **Normalización de Texto y Resolución de Tildes:** Uso de `.str.lower().str.capitalize()` y reemplazos lógicos con `.replace()` para consolidar variantes inconsistentes (ej. *celulares, CELULARES, electrodomesticos* -> *Celulares, Electrodomésticos*).
+4. **Sanación de Codificación (Character Encoding):** Implementación de codificación universal `utf-8-sig` para corregir la corrupción de caracteres especiales (é, Ñ) al exportar hacia herramientas tradicionales como Microsoft Excel.
+5. **Tratamiento Avanzado de Nulos (Imputación):** Remoción de filas críticas huérfanas de autoría (Asesor nulo) y sustitución inteligente de montos financieros vacíos utilizando el promedio estadístico general de la tienda mediante NumPy.
+
+## 📊 Estructura de Datos Final
+El script exporta de manera limpia un archivo optimizado con dos categorías unificadas:
+- `Celulares`
+- `Electrodomésticos`
